@@ -7,20 +7,18 @@ for i in range(N):
 
 pairs.sort(key=lambda x: x[0])
 
-# 逆から累積和
-acc = [0]
-j = 0
-for i in range(N-1, -1, -1):
-    acc.append(acc[j]+pairs[i][1])
-    j += 1
+sum_b = 0
+for i in range(N):
+    sum_b += pairs[i][1]
 
-acc.reverse()
-
-if acc[0] <= K:
+if sum_b <= K:
     print(1)
     sys.exit()
 
 for i in range(N):
-    if acc[i] <= K:
+    if sum_b <= K:
         print(pairs[i-1][0]+1)
-        break
+        sys.exit()
+    sum_b -= pairs[i][1]
+
+print(pairs[-1][0]+1)
