@@ -2,7 +2,7 @@
 using namespace std;
 
 // second降順，secondが同値のときfirst昇順
-bool customCompare(const pair<int, double> &a, const pair<int, double> &b) {
+bool customCompare(const pair<int, long double> &a, const pair<int, long double> &b) {
     if (a.second != b.second) {
         return a.second > b.second;
     } else {
@@ -17,10 +17,10 @@ int main() {
     for (int i = 0; i < N; i++) {
         cin >> ab[i].first >> ab[i].second;
     }
-    vector<pair<int, double>> success_rate(N);
+    vector<pair<int, long double>> success_rate(N);
     for (int i = 0; i < N; i++) {
         success_rate[i].first = i + 1;
-        success_rate[i].second = double(ab[i].first) / (ab[i].first + ab[i].second);
+        success_rate[i].second = (long double)(ab[i].first) / (ab[i].first + ab[i].second);
     }
     sort(success_rate.begin(), success_rate.end(), customCompare);
 
