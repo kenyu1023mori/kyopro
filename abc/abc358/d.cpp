@@ -7,7 +7,7 @@ using ull = unsigned long long;
 int main() {
     int N, M;
     cin >> N >> M;
-    deque<int> A, B;
+    vector<int> A, B;
     for (int i = 0; i < N; i++) {
         int a;
         cin >> a;
@@ -18,24 +18,21 @@ int main() {
         cin >> b;
         B.push_back(b);
     }
-    sort(A.begin(), A.end());
-    sort(B.begin(), B.end());
-    
+    // 平衡二分探索木
+    multiset<int> st;
+    for (int i = 0; i < N; i++) st.insert(A[i]);
     ll ans = 0;
-    while (B.size() > 0) {
-        if (A.size() == 0) {
+    for (int i = 0; i < M; i++) {
+        // intでやったらエラーになる，戻り値がイテレータ
+        auto v = st.lower_bound(B[i]);
+        // B[i]以上の要素がAに存在しないとき，end()が返される
+        if (v == st.end()) {
             cout << -1 << endl;
             return 0;
         }
-        // 渡せない
-        if (B[0] > A[0]) {
-            A.pop_front();
-            continue;
-        }
-        // 渡せた
-        ans += A[0];
-        A.pop_front();
-        B.pop_front();
+        // イテレータが指している要素の取得は*で
+        ans += *v;
+        st.erase(v);
     }
     cout << ans << endl;
     return 0;
