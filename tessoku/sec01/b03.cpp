@@ -14,6 +14,7 @@ int main() {
         if (i == j || j == k || i == k) continue;
         if (A[i]+A[j]+A[k] == 1000) {
             cout << "Yes" << endl;
+            return 0;
         }
     }
     cout << "No" << endl;
