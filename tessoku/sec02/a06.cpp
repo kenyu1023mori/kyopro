@@ -15,7 +15,7 @@ int main() {
     rep(i, Q) {
         int l, r;
         cin >> l >> r;
-        cout << acc[r]-acc[l-1] << endl;;
+        cout << acc[r]-acc[l-1] << endl;
     }
     return 0;
 }
