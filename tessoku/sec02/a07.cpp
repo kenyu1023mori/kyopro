@@ -12,11 +12,19 @@ int main() {
     rep(i, N) cin >> L[i] >> R[i];
     sort(L.begin(), L.end());
     sort(R.begin(), R.end());
-    int tmp = 0;
+    rep(i, N) R[i]++;
+    vector<int> LL(D+1);
+    int l = 0;
     for (int i = 1; i <= D; i++) {
-        if (L[i-1] == i) tmp++;
-        if (R[i-1] == i) tmp--;
-        cout << tmp << endl;
+        while (L[l] == i) l++;
+        LL[i] = l;
     }
+    int r = 0;
+    vector<int> RR(D+1);
+    for (int i = 1; i <= D; i++) {
+        while (R[r] == i) r++;
+        RR[i] = r;
+    }
+    for(int i = 1; i <= D; i++) cout << LL[i]-RR[i] << endl;
     return 0;
 }
