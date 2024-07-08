@@ -13,7 +13,7 @@ int main() {
             string tmp;
             // Sをw文字毎に区切る
             int i = 0;
-            while (w*i+c < int(S.size())) {
+            while (w*i+c <= int(S.size())) {
                 tmp += S.substr(w*i+(c-1), 1);
                 i++;
             }
