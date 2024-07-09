@@ -17,11 +17,9 @@ int main() {
     vector<int> maximum(N);
     rep(i, N) maximum[A[i]] = max(maximum[A[i]], W[i]);
 
-    int ans = 0;
-    rep(i, N) {
-        ans += W[i];
-        ans -= maximum[i];
-    }
-    cout << ans << endl;
+    // 解説みてaccumulate使ってみる
+    const int sum_w = accumulate(W.begin(), W.end(), 0);
+    const int sum_maximum = accumulate(maximum.begin(), maximum.end(), 0);
+    cout << sum_w - sum_maximum << endl;
     return 0;
 }
