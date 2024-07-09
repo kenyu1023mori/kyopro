@@ -8,30 +8,19 @@ using ull = unsigned long long;
 int main() {
     int N;
     cin >> N;
-    vector<pair<int, int>> aw(N);
+    vector<int> A(N), W(N);
     rep(i, N) {
-        cin >> aw[i].first;
-        aw[i].first--;
+        cin >> A[i];
+        A[i]--;
     }
-    rep(i, N) aw[i].second;
-    sort(aw.begin(), aw.end());
-    ll ans = 0;
-    int max = aw[0].second;
-    int max_i = aw[0].first;
-    for (int i = 1; i < N; i++) {
-        if (max_i != aw[i].first) {
-            max_i = aw[i].first;
-            max = aw[i].second;
-            continue;
-        }
-        if (max < aw[i].second) {
-            ans += max;
-            max = aw[i].second;
-        }
-        else {
-            ans += aw[i].second;
-        }
+    rep(i, N) cin >> W[i];
+    vector<int> maximum(N);
+    rep(i, N) maximum[A[i]] = max(maximum[A[i]], W[i]);
 
+    int ans = 0;
+    rep(i, N) {
+        ans += W[i];
+        ans -= maximum[i];
     }
     cout << ans << endl;
     return 0;
