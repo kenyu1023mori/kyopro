@@ -8,10 +8,10 @@ using ull = unsigned long long;
 int main() {
     int N, K;
     cin >> N >> K;
-    vector<int> A(N);
+    vector<ll> A(N);
     rep(i, N) cin >> A[i];
     sort(A.begin(), A.end());
-    deque<int> deq;
+    deque<ll> deq;
     rep(i, N) deq.push_back(A[i]);
     // 偶数なら全部，奇数なら最後の1回残す
     rep(i, (K/2)*2) {
@@ -27,7 +27,7 @@ int main() {
         cout << deq.back() - deq.front() << endl;
         return 0;
     }
-    int s1, s2, e1, e2;
+    ll s1, s2, e1, e2;
     s1 = deq[0];
     s2 = deq[1];
     e1 = deq[deq.size()-1];
