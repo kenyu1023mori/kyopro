@@ -11,28 +11,11 @@ int main() {
     vector<ll> A(N);
     rep(i, N) cin >> A[i];
     sort(A.begin(), A.end());
-    deque<ll> deq;
-    rep(i, N) deq.push_back(A[i]);
-    // 偶数なら全部，奇数なら最後の1回残す
-    rep(i, (K/2)*2) {
-        if (i % 2 == 0) deq.pop_front();
-        else deq.pop_back();
+    // 最小値を決め打ちしてN-K個とったやつのmax-minで走査
+    ll ans = 1000000000;
+    for (int i = 0; i <= K; i++) {
+        ans = min(ans, A[i+N-K-1]-A[i]);
     }
-    // 残ったものが1つのとき
-    if (N-K == 1) {
-        cout << 0 << endl;
-        return 0;
-    }
-    if (K%2 == 0) {
-        cout << deq.back() - deq.front() << endl;
-        return 0;
-    }
-    ll s1, s2, e1, e2;
-    s1 = deq[0];
-    s2 = deq[1];
-    e1 = deq[deq.size()-1];
-    e2 = deq[deq.size()-2];
-    if (e1-s2 > e2-s1) cout << e2-s1 << endl;
-    else cout << e1-s2 << endl;
+    cout << ans << endl;
     return 0;
 }
