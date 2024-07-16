@@ -2,13 +2,13 @@ import sys
 N = int(input())
 L, R = [], []
 
-sum_L, sum_R = 0, 0
 for i in range(N):
     l, r = map(int, input().split())
     L.append(l)
     R.append(r)
-    sum_L += l
-    sum_R += r
+
+sum_L = sum(L)
+sum_R = sum(R)
 
 if sum_L > 0 or sum_R < 0:
     print("No")
