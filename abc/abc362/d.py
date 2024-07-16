@@ -1,5 +1,8 @@
 import heapq
 
+# 参考 : アルゴ式のダイクストラのコード
+# https://algo-method.com/tasks/1645CQpP
+
 # 辺情報を表す構造体
 class edge:
     def __init__(self, end, leng):
