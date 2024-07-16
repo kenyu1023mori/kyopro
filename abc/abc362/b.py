@@ -1,7 +1,7 @@
 xa, ya = map(int, input().split())
 xb, yb = map(int, input().split())
 xc, yc = map(int, input().split())
-
+# 内積
 ABx, ABy = xb-xa, yb-ya
 BCx, BCy = xc-xb, yc-yb
 CAx, CAy = xa-xc, ya-yc
