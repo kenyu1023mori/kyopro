@@ -5,6 +5,24 @@ using uint = unsigned int;
 using ll = long long;
 using ull = unsigned long long;
 
+template <typename T>
+bool chmin(T& a, T b) {
+    if (a > b) {
+        a = b;
+        return true;
+    }
+    return false;
+}
+
+template <typename T>
+bool chmax(T& a, T b) {
+    if (a < b) {
+        a = b;
+        return true;
+    }
+    return false;
+}
+
 int main() {
     
     return 0;
