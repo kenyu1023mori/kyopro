@@ -67,7 +67,7 @@ N = int(input())
 
 ans = 0
 
-l, r = 0, 10e10
+l, r = 0, 10**10
 while (l+1) < r:
     mid = (l+r)//2
     if (2*mid**2) <= N:
@@ -76,7 +76,7 @@ while (l+1) < r:
         r = mid
 ans += l
 
-l, r = 0, 10e10
+l, r = 0, 10**10
 while (l+1) < r:
     mid = (l+r)//2
     if (4*mid**2) <= N:
